@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+  --color-mint-50: #f4faf5;
+  --color-mint-100: #e7f4e9;
+  --color-mint-200: #d3ebd8;
+  --color-mint-300: #b6dcbe;
+  --color-mint-400: #8fc79c;
+  --color-forest-600: #2f6b43;
+  --color-forest-700: #1f5133;
+  --color-forest-800: #143a25;
+  --color-forest-900: #0d2a1b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-mint-50);
+  color: var(--color-forest-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 40;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-floaty { animation: floaty 7s ease-in-out infinite; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp .7s cubic-bezier(.22,1,.36,1) both; }
+
+::selection {
+  background: var(--color-forest-800);
+  color: #fff;
+}
