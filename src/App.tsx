@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import BeforeAfterSlider from "./components/BeforeAfterSlider";
 import {
   acneOverview,
@@ -6,7 +6,6 @@ import {
   clinic,
   doctor,
   faqs,
-  steps,
   technologies,
   testimonials,
 } from "./data";
@@ -34,7 +33,7 @@ function Btn({
   className?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300";
+    "inline-flex items-center justify-center gap-1 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300";
   const styles =
     variant === "solid"
       ? "bg-forest-800 text-mint-50 hover:bg-forest-900 shadow-lg shadow-forest-800/20 hover:shadow-xl hover:-translate-y-0.5"
@@ -164,7 +163,7 @@ function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Btn className="hidden sm:inline-flex !px-5 !py-2.5">Book Consult</Btn>
+          <Btn className="hidden sm:inline-flex !px-5 !py-2.5">Book Now</Btn>
           <button
             aria-label="Menu"
             onClick={() => setOpen((o) => !o)}
@@ -299,6 +298,21 @@ function AcneOverview() {
           Stop new breakouts. Repair the scars left behind.
         </h2>
         <p className="mt-4 text-forest-800/75">{acneOverview.intro}</p>
+        <div className="mt-6 flex flex-wrap gap-2">
+          {[
+            "Medical acne management",
+            "Dermatology-grade topicals",
+            "In-clinic peels",
+            "Scar revision & pigmentation care",
+          ].map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-mint-200 bg-white px-4 py-2 text-xs font-medium text-forest-800 shadow-sm"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -465,12 +479,10 @@ function Results() {
         <div className="max-w-2xl">
           <Eyebrow>Before &amp; after</Eyebrow>
           <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
-            Drag the handle. Judge for yourself.
+            Hover on desktop, slide on phone.
           </h2>
           <p className="mt-4 text-forest-800/70">
-            Standardised lighting, same angle, same distance — no filters, no
-            flattering angles. Individual results vary with scar depth, skin type
-            and adherence to aftercare.
+            Standardised lighting, same angle, same distance - no filters, no flattering angles. Hover on desktop or use the slider on phone to compare the change. Individual results vary with scar depth, skin type and adherence to aftercare.
           </p>
         </div>
         <Btn href="#book" variant="ghost">
@@ -478,15 +490,26 @@ function Results() {
         </Btn>
       </div>
 
-      <div className="mt-12 grid gap-8 lg:grid-cols-3">
+      <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
         {cases.map((c) => (
-          <figure key={c.id} className="rounded-3xl border border-mint-200 bg-white p-4 shadow-sm">
+          <figure key={c.id} className="overflow-hidden rounded-3xl border border-mint-200 bg-white shadow-sm">
             <BeforeAfterSlider
               before={c.before}
               after={c.after}
-              className="aspect-square w-full cursor-ew-resize"
+              beforeObjectPosition={c.beforeObjectPosition}
+              afterObjectPosition={c.afterObjectPosition}
+              className="aspect-square w-full cursor-pointer"
             />
-            
+            <figcaption className="space-y-2 p-5">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest-600">
+                Result {c.id}
+              </div>
+              <h3 className="font-display text-xl text-forest-900">{c.title}</h3>
+              <p className="text-sm leading-relaxed text-forest-800/70">
+                {c.patient} · {c.duration}
+              </p>
+              <p className="text-sm leading-relaxed text-forest-800/75">{c.plan}</p>
+            </figcaption>
           </figure>
         ))}
       </div>
@@ -497,6 +520,29 @@ function Results() {
 /* ---------------- process ---------------- */
 
 function Process() {
+  const processSteps = [
+    {
+      n: "01",
+      title: "Scar Mapping Consultation",
+      desc: "We begin by carefully photographing and assessing your scar pattern. Since every scar is different, we create a personalised approach instead of relying on one treatment for all scar types.",
+    },
+    {
+      n: "02",
+      title: "Personalised Treatment Plan",
+      desc: "You receive a clear, step-by-step treatment plan outlining which concerns to address first, the recommended combination of techniques, session spacing, expected downtime, and realistic results.",
+    },
+    {
+      n: "03",
+      title: "Combination Therapy",
+      desc: "We strategically combine treatments such as subcision, skin resurfacing, collagen stimulation, and pigmentation correction. Each technique is performed in the right sequence to address multiple scar types effectively.",
+    },
+    {
+      n: "04",
+      title: "Progress Review & Maintenance",
+      desc: "Standardised photographs are taken at every visit to monitor your progress. We also recommend a personalised skin-barrier repair and sun-protection routine to maintain results and adjust the treatment plan when necessary.",
+    },
+  ];
+
   return (
     <Section className="bg-mint-100">
       <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
@@ -513,7 +559,7 @@ function Process() {
         </div>
 
         <ol className="relative space-y-8 border-l border-mint-300 pl-8">
-          {steps.map((s) => (
+          {processSteps.map((s) => (
             <li key={s.n} className="relative">
               <span className="absolute -left-[2.55rem] flex h-8 w-8 items-center justify-center rounded-full bg-forest-800 text-[11px] font-bold text-mint-50">
                 {s.n}
@@ -954,3 +1000,5 @@ export default function App() {
     </div>
   );
 }
+
+

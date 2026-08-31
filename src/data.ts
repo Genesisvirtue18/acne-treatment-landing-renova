@@ -1,4 +1,4 @@
-export const clinic = {
+﻿export const clinic = {
   name: "RenovaAura",
   tagline: "Acne Scar Clinic",
   location: "C-3, 1st floor, Anand Vihar, New Delhi, 110092",
@@ -11,11 +11,11 @@ export const clinic = {
 
 export const acneOverview = {
   intro:
-    "Acne is rarely just a teen thing. Adult hormonal acne, jawline cysts, dark marks and post-acne scars often need a staged plan, not a single facial.",
+    "Acne is rarely just a teen thing. Adult hormonal acne, jawline cysts, dark marks and post-acne scars often need a staged plan, not a single facial. We combine medical acne treatment, dermatology-grade topicals, in-clinic peels and scar revision when the skin is ready. When acne overlaps with other concerns, we also review related options such as dark circles & under-eye hollows, dull skin & uneven tone, and pigmentation & melasma.",
   symptoms: [
     "Painful cystic acne along the jawline and chin",
-    "Inflammatory whiteheads, blackheads, or pustules",
-    "Dark marks that linger after spots heal",
+    "Whiteheads, blackheads, or pustules",
+    "Dark marks that linger after acne heal",
     "Rolling, ice-pick or boxcar scars from past acne",
     "Acne that flares with periods, stress, or specific foods",
   ],
@@ -169,31 +169,71 @@ export const technologies = [
 export const cases = [
   {
     id: 1,
-    before: "/images/before1.jpg",
-    after: "/images/after1.jpg",
+    before: "/images/b1.jpeg",
+    after: "/images/a1.jpeg",
     title: "Rolling & boxcar scars, left cheek",
     patient: "Female, 27",
     plan: "Subcision + 4 × VirtuEx fractional laser",
     duration: "6 months",
+    beforeObjectPosition: "center 38%",
+    afterObjectPosition: "center 38%",
   },
   {
     id: 2,
-    before: "/images/before2.jpg",
-    after: "/images/after2.jpg",
+    before: "/images/b2.jpeg",
+    after: "/images/a2.jpeg",
     title: "Deep icepick scarring, both cheeks",
     patient: "Male, 31",
-    plan: "5 × VirtuEx (Erbium+ co2 )+ QLARA toning",
+    plan: "5 × VirtuEx (Erbium+ co2) + QLARA toning",
     duration: "9 months",
+    beforeObjectPosition: "center 35%",
+    afterObjectPosition: "center 35%",
   },
   {
     id: 3,
-    before: "/images/before3.jpg",
-    after: "/images/after3.jpg",
+    before: "/images/b3.jpeg",
+    after: "/images/a3.jpeg",
     title: "Post-acne pigmentation & shallow scars",
     patient: "Female, 24",
     plan: "6 × QLARA laser toning + medical topicals",
     duration: "4 months",
+    beforeObjectPosition: "center 32%",
+    afterObjectPosition: "center 32%",
   },
+  {
+    id: 4,
+    before: "/images/b4.jpeg",
+    after: "/images/a4.jpeg",
+    title: "Mixed acne scarring, right profile",
+    patient: "Female, 29",
+    plan: "Subcision + resurfacing + pigment correction",
+    duration: "7 months",
+    beforeObjectPosition: "center 36%",
+    afterObjectPosition: "center 36%",
+  },
+  {
+    id: 5,
+    before: "/images/b5.jpeg",
+    after: "/images/a5.jpeg",
+    title: "Textural acne scars with lingering marks",
+    patient: "Male, 26",
+    plan: "Combination protocol with collagen stimulation",
+    duration: "5 months",
+    beforeObjectPosition: "center 34%",
+    afterObjectPosition: "center 34%",
+  },
+  {
+    id: 6,
+    before: "/images/b6.jpeg",
+    after: "/images/a7.jpeg",
+    title: "Post-inflammatory pigment and shallow atrophy",
+    patient: "Female, 34",
+    plan: "QLARA toning + fractional resurfacing",
+    duration: "6 months",
+    beforeObjectPosition: "center 33%",
+    afterObjectPosition: "center 33%",
+  },
+ 
 ];
 
 export const gallery = [
@@ -303,22 +343,22 @@ export const steps = [
   {
     n: "01",
     title: "Scar mapping consult",
-    desc: "We photograph and map every scar type on your face — icepick, boxcar, rolling, pigment — because each responds to a different tool.",
+    desc: "We photograph and map the full scar pattern first, then decide on a combined plan. It is not one machine per scar.",
   },
   {
     n: "02",
     title: "Written treatment plan",
-    desc: "You leave with a printed protocol: number of sessions, devices used, spacing, downtime and realistic percentage improvement.",
+    desc: "You leave with a staged protocol: what to treat first, which techniques may be combined, spacing, downtime and realistic improvement.",
   },
   {
     n: "03",
     title: "Combination therapy",
-    desc: "Subcision and resurfacing release tethered scars, VirtuEx rebuilds collagen, QLARA clears the pigment left behind.",
+    desc: "We combine the right techniques in the right sequence - subcision, resurfacing, collagen stimulation and pigment treatment - so different scar types improve together.",
   },
   {
     n: "04",
     title: "Review & maintenance",
-    desc: "Standardised photos at every visit, plus a barrier-repair and sun-protection routine so results hold.",
+    desc: "Standardised photos at every visit, plus a barrier-repair and sun-protection routine so results hold and the plan can be adjusted if needed.",
   },
 ];
 
