@@ -500,16 +500,7 @@ function Results() {
               afterObjectPosition={c.afterObjectPosition}
               className="aspect-square w-full cursor-pointer"
             />
-            <figcaption className="space-y-2 p-5">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest-600">
-                Result {c.id}
-              </div>
-              <h3 className="font-display text-xl text-forest-900">{c.title}</h3>
-              <p className="text-sm leading-relaxed text-forest-800/70">
-                {c.patient} · {c.duration}
-              </p>
-              <p className="text-sm leading-relaxed text-forest-800/75">{c.plan}</p>
-            </figcaption>
+           
           </figure>
         ))}
       </div>
