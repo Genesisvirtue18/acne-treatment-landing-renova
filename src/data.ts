@@ -9,12 +9,48 @@ export const clinic = {
   hours: "Mon to Sat 10:00 AM to 7:00 PM | Sun: 10:00 AM to 2:00 PM",
 };
 
+export const acneOverview = {
+  intro:
+    "Acne is rarely just a teen thing. Adult hormonal acne, jawline cysts, dark marks and post-acne scars often need a staged plan, not a single facial.",
+  symptoms: [
+    "Painful cystic acne along the jawline and chin",
+    "Inflammatory whiteheads, blackheads, or pustules",
+    "Dark marks that linger after spots heal",
+    "Rolling, ice-pick or boxcar scars from past acne",
+    "Acne that flares with periods, stress, or specific foods",
+  ],
+  causes: [
+    "Hormonal imbalance, especially androgens in women",
+    "Excess sebum production",
+    "P. acnes bacteria colonising blocked follicles",
+    "High glycemic foods and dairy in some patients",
+    "Over-cleansing or the wrong skincare products disrupting the barrier",
+  ],
+  approach: [
+    "Identify your acne type and any trigger before treatment starts",
+    "Treat active acne first with medical management, topicals and in-clinic peels",
+    "Build a maintenance plan to prevent rebound when active treatment ends",
+    "Address scarring only once active acne is controlled",
+    "Set an honest timeline: meaningful results take months, not weeks",
+  ],
+  tools: [
+    {
+      name: "VirtuEx Erbium+ co2",
+      text: "Resurfaces texture, rebuilds collagen and softens boxcar and rolling scars.",
+    },
+    {
+      name: "QLARA Q-switched toning",
+      text: "Targets the post-acne pigmentation and dark marks that remain after inflammation settles.",
+    },
+  ],
+};
+
 export const scarTypes = [
   {
     key: "Icepick",
     title: "Icepick Scars",
     desc: "Narrow, deep punctures that look like the skin was pierced with a fine tool. Common on cheeks and temples.",
-    protocol: "TCA CROSS + VirtuEx fractional laser",
+    protocol: "VirtuEx Erbium+ co2 fractional laser",
   },
   {
     key: "Boxcar",
@@ -54,13 +90,13 @@ export const technologies = [
     name: "VirtuEx Laser",
     category: "Laser",
     partner: "Derma Lasertech Pvt. Ltd. technology partner",
-    headline: "1550 nm Erbium Glass fractional laser",
+    headline: "VirtuEx Erbium+ co2 fractional laser",
     summary:
-      "VirtuEx is an advanced 1550 nm Erbium Glass fractional laser that stimulates collagen production, resurfaces damaged skin, improves scars and pigmentation, and supports healthier, smoother, younger-looking skin with minimal downtime.",
+      "VirtuEx is an advanced Erbium+ co2 fractional laser that stimulates collagen production, resurfaces damaged skin, improves scars and pigmentation, and supports healthier, smoother, younger-looking skin with minimal downtime.",
     detail:
       "By creating microscopic treatment zones beneath the skin's surface, it stimulates collagen remodeling while preserving surrounding healthy tissue for faster healing. In acne scar protocols it is our primary resurfacing tool for boxcar, rolling and icepick scars.",
     spec: [
-      ["Laser type", "1550 nm Erbium Glass fractional"],
+      ["Laser type", "Erbium+ co2 fractional"],
       ["Mechanism", "Microthermal zones → collagen remodeling"],
       ["Best for", "Atrophic acne scars, surgical scars, texture"],
       ["Sessions", "Typically 3–6, spaced several weeks apart"],
@@ -88,7 +124,7 @@ export const technologies = [
       "Uneven texture",
     ],
     image:
-      "https://images.pexels.com/photos/4586726/pexels-photo-4586726.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://cdn.sanity.io/images/q7pg9y33/production/9fdf838aeb52ac952f6f770014a7325cb68f7090-1279x1600.jpg",
   },
   {
     id: "qlara",
@@ -126,7 +162,7 @@ export const technologies = [
       "Skin toning & glow",
     ],
     image:
-      "https://images.pexels.com/photos/4586749/pexels-photo-4586749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://cdn.sanity.io/images/q7pg9y33/production/0aecb1911635a2e7aa3786d8b60daac9031d3c92-597x1280.jpg",
   },
 ];
 
@@ -146,7 +182,7 @@ export const cases = [
     after: "/images/after2.jpg",
     title: "Deep icepick scarring, both cheeks",
     patient: "Male, 31",
-    plan: "TCA CROSS + 5 × VirtuEx + QLARA toning",
+    plan: "5 × VirtuEx Erbium+ co2 + QLARA toning",
     duration: "9 months",
   },
   {
@@ -277,7 +313,7 @@ export const steps = [
   {
     n: "03",
     title: "Combination therapy",
-    desc: "Subcision and TCA CROSS release tethered scars, VirtuEx rebuilds collagen, QLARA clears the pigment left behind.",
+    desc: "Subcision and resurfacing release tethered scars, VirtuEx rebuilds collagen, QLARA clears the pigment left behind.",
   },
   {
     n: "04",
@@ -287,6 +323,78 @@ export const steps = [
 ];
 
 export const faqs = [
+  {
+    q: "What are the causes of post-acne scars?",
+    a: "Scars form when inflamed acne damages collagen in the deeper skin layers. The more severe, prolonged or repeatedly picked the breakout, the higher the risk. Early control of active acne is the best prevention.",
+  },
+  {
+    q: "What are the types of acne scars?",
+    a: "The main types are ice-pick scars, boxcar scars and rolling scars. Many patients also have post-acne pigmentation or redness, which are not true scars but often need treatment alongside the texture changes.",
+  },
+  {
+    q: "What are stretch marks and why do they occur?",
+    a: "Stretch marks are a separate type of skin change caused by rapid stretching of the skin, such as growth, pregnancy or weight changes. They are treated differently from acne scars, but we can guide you to the right plan if both are present.",
+  },
+  {
+    q: "What services are offered for acne scars and stretch marks?",
+    a: "Depending on the skin concern, we may use chemical peels, microneedling, subcision, fractional lasers, PRP or GFC, and supportive medical skincare. The exact combination depends on scar type, skin tone and healing time.",
+  },
+  {
+    q: "What is chemical peeling?",
+    a: "Chemical peeling uses a controlled medical solution to lift damaged surface layers and encourage smoother, more even skin renewal. It can help with acne, post-acne marks and dullness when used at the right strength.",
+  },
+  {
+    q: "What is microneedling?",
+    a: "Microneedling creates tiny controlled channels in the skin to stimulate collagen and improve texture over time. It is often combined with other treatments for acne scars, pigmentation or stretch marks.",
+  },
+  {
+    q: "What is fractional CO2 laser and how does it work?",
+    a: "Fractional lasers deliver energy in a patterned way so that small treatment zones are targeted while nearby skin is preserved for healing. In acne scar treatment, this helps remodel collagen and soften uneven texture with less downtime than older fully ablative lasers.",
+  },
+  {
+    q: "What is PRP?",
+    a: "PRP stands for platelet-rich plasma, a preparation made from your own blood that is rich in growth factors. It is sometimes added to skin and hair procedures to support healing and recovery.",
+  },
+  {
+    q: "What does PRP or GFC do for skin?",
+    a: "PRP and GFC are supportive regenerative treatments that may help with healing, collagen support and overall skin quality. They are not one-size-fits-all treatments and are best selected after a proper consultation.",
+  },
+  {
+    q: "Who can undergo these treatments?",
+    a: "Most adults with stable health can be assessed for treatment, but timing matters. We usually stabilise active acne first, then choose scar procedures once inflammation is under control.",
+  },
+  {
+    q: "How do I choose the right procedure for maximum benefit?",
+    a: "The right procedure depends on whether the main issue is active acne, pigmentation, tethered scars or volume loss. The best results usually come from a combined plan rather than one single device.",
+  },
+  {
+    q: "What are the post-procedure instructions?",
+    a: "You will usually be asked to keep the skin clean, avoid picking, use sunscreen strictly, and pause irritating products for a short period. Your doctor will give instructions based on the exact treatment performed.",
+  },
+  {
+    q: "How frequently can I take my sessions?",
+    a: "Session spacing depends on the treatment. Some procedures can be repeated after a few weeks, while deeper resurfacing treatments need more healing time between visits.",
+  },
+  {
+    q: "How many sittings will I require?",
+    a: "The number of sittings depends on the depth of acne scars, how active the acne is, your skin type and how well you heal. Many patients need a staged plan over several months.",
+  },
+  {
+    q: "Is anesthesia required?",
+    a: "For many acne scar procedures, a topical numbing cream is enough. Some deeper procedures may need additional comfort measures, which are discussed before treatment.",
+  },
+  {
+    q: "How will I know my treatment is successful?",
+    a: "We track progress with standardised photographs, texture changes, fewer active breakouts, lighter pigment and smoother scars. Improvement should be visible over time, not just after one session.",
+  },
+  {
+    q: "How long will the effects last after the last session?",
+    a: "Results can last well, especially when active acne is controlled and maintenance skincare is followed. Acne itself can recur, so long-term control is as important as scar revision.",
+  },
+  {
+    q: "Will I be given any medicine after the procedure?",
+    a: "Some procedures are followed by supportive medicines or skincare to reduce irritation and protect healing. The exact aftercare plan depends on the treatment you receive.",
+  },
   {
     q: "Can acne scars be removed completely?",
     a: "Honest answer: no protocol erases scars 100%. With a correctly combined plan most patients see 60–85% improvement in scar depth, texture and shadowing. We show you standardised photographs at every review so progress is measurable, not marketing.",

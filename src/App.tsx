@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import BeforeAfterSlider from "./components/BeforeAfterSlider";
 import {
+  acneOverview,
   cases,
   clinic,
   doctor,
   faqs,
-  gallery,
-  scarTypes,
   steps,
   technologies,
   testimonials,
@@ -88,10 +87,10 @@ function Section({
 /* ---------------- nav ---------------- */
 
 const links = [
-  ["Scar Types", "#types"],
+  ["Acne & Scars", "#acne"],
+  ["Approach", "#types"],
   ["Technology", "#technology"],
   ["Results", "#results"],
-  ["Gallery", "#gallery"],
   ["Your Doctor", "#doctor"],
   ["FAQ", "#faq"],
 ];
@@ -107,18 +106,16 @@ function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-mint-50/85 backdrop-blur-xl shadow-[0_1px_0_rgba(20,58,37,.08)]"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 bg-white transition-all duration-300 ${
+        scrolled ? "shadow-[0_1px_0_rgba(20,58,37,.08)]" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <a href="#top" className="flex items-center gap-2.5">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+        <a href="#top" className="flex items-center gap-2.5 shrink-0">
           <img
-            src="/images/logo.jpeg"
+            src="/images/logo-white.png"
             alt={`${clinic.name} logo`}
-            className="h-10  object-cover shadow-sm ring-1 ring-forest-800/10"
+            className="block h-14 w-auto object-contain bg-transparent"
           />
         
         </a>
@@ -150,7 +147,7 @@ function Nav() {
       </div>
 
       {open && (
-        <div className="border-t border-forest-800/10 bg-mint-50/95 px-5 py-4 backdrop-blur-xl lg:hidden">
+        <div className="border-t border-forest-800/10 bg-white px-5 py-4 backdrop-blur-xl lg:hidden">
           <div className="grid gap-1">
             {links.map(([label, href]) => (
               <a
@@ -181,19 +178,20 @@ function Hero() {
         <div className="animate-fade-up">
           <Eyebrow>Acne Scar Revision · Delhi NCR</Eyebrow>
           <h1 className="mt-5 font-display text-4xl leading-[1.05] tracking-tight text-forest-900 sm:text-5xl md:text-6xl">
-            Your acne is gone.
+            Stop new breakouts.
             <br />
-            <span className="italic text-forest-600">Let's clear what it left behind.</span>
+            <span className="italic text-forest-600">Repair the scars left behind.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-forest-800/75 md:text-lg">
-            Icepick, boxcar, rolling scars and post-acne pigmentation each need a
-            different tool. We map every scar on your face, then combine
-            subcision, TCA CROSS, the <strong className="font-semibold text-forest-900">VirtuEx 1550&nbsp;nm fractional laser</strong> and{" "}
+            Acne is treated in stages, because active breakouts, pigment and
+            scarring do not respond to the same approach. We map every scar on
+            your face, control inflammation first, then combine subcision,
+            the <strong className="font-semibold text-forest-900">VirtuEx Erbium+ co2</strong> and{" "}
             <strong className="font-semibold text-forest-900">QLARA Q-switched toning</strong> into one written protocol.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Btn>Book a scar-mapping consult →</Btn>
+            <Btn>Book an acne + scar consult →</Btn>
             <Btn href="#results" variant="ghost">
               See real results
             </Btn>
@@ -240,8 +238,7 @@ function Hero() {
 function Strip() {
   const items = [
     "Subcision",
-    "TCA CROSS",
-    "VirtuEx 1550 nm Fractional",
+    "VirtuEx Erbium+ co2",
     "QLARA Q-Switched",
     "Microneedling RF",
     "Chemical Peels",
@@ -260,48 +257,87 @@ function Strip() {
   );
 }
 
+/* ---------------- acne overview ---------------- */
+
+function AcneOverview() {
+  return (
+    <Section id="acne" className="bg-mint-100">
+      <div className="max-w-3xl">
+        <Eyebrow>Acne and acne scars</Eyebrow>
+        <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
+          Stop new breakouts. Repair the scars left behind.
+        </h2>
+        <p className="mt-4 text-forest-800/75">{acneOverview.intro}</p>
+      </div>
+
+      <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="rounded-3xl border border-mint-200 bg-white p-7 shadow-sm">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest-600">
+            What you might notice
+          </div>
+          <h3 className="mt-3 font-display text-2xl text-forest-900">Symptoms</h3>
+          <ul className="mt-5 space-y-3 text-sm leading-relaxed text-forest-800/75">
+            {acneOverview.symptoms.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-mint-400" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-3xl border border-mint-200 bg-white p-7 shadow-sm">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest-600">
+            What's actually happening
+          </div>
+          <h3 className="mt-3 font-display text-2xl text-forest-900">Common causes</h3>
+          <ul className="mt-5 space-y-3 text-sm leading-relaxed text-forest-800/75">
+            {acneOverview.causes.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-forest-800" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </Section>
+  );
+}
+
 /* ---------------- scar types ---------------- */
 
 function ScarTypes() {
   return (
     <Section id="types">
       <div className="max-w-2xl">
-        <Eyebrow>Know your scar</Eyebrow>
+        <Eyebrow>Our approach</Eyebrow>
         <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
-          Six different scars. Six different answers.
+          A staged plan, not a single facial.
         </h2>
         <p className="mt-4 text-forest-800/70">
-          The single biggest reason acne scar treatment fails is treating every
-          scar with the same device. Here's what we look for during your mapping
-          consult.
+          We treat active acne first, stabilise the barrier, and only then move
+          to scar revision and pigmentation support.
         </p>
       </div>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {scarTypes.map((s, i) => (
+        {acneOverview.approach.map((item, i) => (
           <article
-            key={s.key}
+            key={item}
             className="group relative overflow-hidden rounded-2xl border border-mint-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-mint-400 hover:shadow-xl hover:shadow-forest-900/5"
           >
             <div className="flex items-start justify-between">
               <span className="font-display text-4xl font-semibold text-mint-300 transition group-hover:text-mint-400">
                 0{i + 1}
               </span>
-              <span className="rounded-full bg-mint-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-forest-700">
-                {s.key}
-              </span>
             </div>
-            <h3 className="mt-4 font-display text-xl text-forest-900">{s.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-forest-800/70">{s.desc}</p>
-            <div className="mt-5 border-t border-mint-200 pt-4">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-forest-600">
-                Our protocol
-              </div>
-              <div className="mt-1 text-sm font-medium text-forest-800">{s.protocol}</div>
-            </div>
+            <p className="mt-4 text-sm leading-relaxed text-forest-800/75">{item}</p>
           </article>
         ))}
       </div>
+
     </Section>
   );
 }
@@ -380,23 +416,9 @@ function Technology() {
           <img
             src={t.image}
             alt={t.name}
-            className="h-64 w-full rounded-3xl object-cover md:h-72"
+            className="h-full w-full rounded-3xl object-cover "
           />
-          <div className="rounded-3xl border border-mint-100/12 bg-mint-100/[0.06] p-7">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-mint-400">
-              Key benefits
-            </div>
-            <ul className="mt-4 space-y-2.5">
-              {t.benefits.map((b) => (
-                <li key={b} className="flex gap-3 text-sm text-mint-200/85">
-                  <svg className="mt-0.5 shrink-0 text-mint-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
+      
         </div>
       </div>
     </Section>
@@ -451,62 +473,6 @@ function Results() {
           </figure>
         ))}
       </div>
-    </Section>
-  );
-}
-
-/* ---------------- gallery ---------------- */
-
-function Gallery() {
-  const [lightbox, setLightbox] = useState<string | null>(null);
-
-  return (
-    <Section id="gallery">
-      <div className="max-w-2xl">
-        <Eyebrow>Inside the clinic</Eyebrow>
-        <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
-          Where the work happens.
-        </h2>
-        <p className="mt-4 text-forest-800/70">
-          Dedicated laser suites, single-use consumables and a dermatologist at
-          the handpiece for every session.
-        </p>
-      </div>
-
-      <div className="mt-12 grid auto-rows-[190px] grid-cols-2 gap-4 md:grid-cols-4">
-        {gallery.map((g) => (
-          <button
-            key={g.src}
-            onClick={() => setLightbox(g.src)}
-            className={`group relative overflow-hidden rounded-2xl ${g.span}`}
-          >
-            <img
-              src={g.src}
-              alt={g.caption}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <span className="absolute inset-0 bg-gradient-to-t from-forest-900/70 via-forest-900/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <span className="absolute bottom-3 left-4 right-4 translate-y-2 text-left text-sm font-medium text-mint-50 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-              {g.caption}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      {lightbox && (
-        <div
-          onClick={() => setLightbox(null)}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-forest-900/90 p-6 backdrop-blur-sm"
-        >
-          <img src={lightbox} alt="" className="max-h-[85vh] max-w-5xl rounded-2xl object-contain shadow-2xl" />
-          <button className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full bg-mint-50 text-forest-900">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      )}
     </Section>
   );
 }
@@ -667,7 +633,7 @@ function Testimonials() {
             </div>
             <figcaption className="mt-6 border-t border-mint-200 pt-4">
               <div className="text-sm font-semibold text-forest-900">{t.name}</div>
-              <div className="text-xs text-forest-800/60">{t.treatment}</div>
+              
             </figcaption>
           </figure>
         ))}
@@ -684,9 +650,9 @@ function Faq() {
     <Section id="faq">
       <div className="grid gap-10 lg:grid-cols-[.7fr_1.3fr]">
         <div>
-          <Eyebrow>Frequently asked</Eyebrow>
+          <Eyebrow>Patient questions</Eyebrow>
           <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-4xl">
-            Straight answers.
+            Straight answers for acne and scars.
           </h2>
           <p className="mt-4 text-sm text-forest-800/70">
             Still unsure? Bring the question to your consult — nothing is rushed.
@@ -826,7 +792,7 @@ function Booking() {
                 <select
                   name="concern"
                   className="mt-2 w-full rounded-xl border border-mint-100/15 bg-forest-900/40 px-4 py-3 text-sm text-mint-50 outline-none transition focus:border-mint-400"
-                  defaultValue="Atrophic acne scars"
+                  defaultValue="Active acne + scarring"
                 >
                   {[
                     "Atrophic acne scars",
@@ -872,21 +838,21 @@ function Booking() {
 
 function Footer() {
   return (
-    <footer className="border-t border-forest-800/10 bg-mint-100 px-5 py-12">
+    <footer className="border-t border-forest-800/10 bg-white px-5 py-12">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-start justify-between gap-8">
           <div className="max-w-sm">
             <div className="flex items-center gap-2.5">
               <img
-                src="/images/logo.jpeg"
+                src="/images/logo-white.png"
                 alt={`${clinic.name} logo`}
-                className="h-10  object-cover shadow-sm ring-1 ring-forest-800/10"
+                className="block h-16 w-auto object-contain bg-transparent"
               />
              
             </div>
             <p className="mt-4 text-sm leading-relaxed text-forest-800/65">
-              Dermatologist-led acne scar revision using the VirtuEx 1550 nm
-              fractional laser and the QLARA Q-switched pigmentation platform.
+              Dermatologist-led acne scar revision using the VirtuEx Erbium+ co2
+              laser and the QLARA Q-switched pigmentation platform.
             </p>
             <div className="mt-5 space-y-2 text-sm text-forest-800/70">
               <p>{clinic.address}</p>
@@ -922,10 +888,10 @@ export default function App() {
       <main>
         <Hero />
         <Strip />
+        <AcneOverview />
         <ScarTypes />
         <Technology />
         <Results />
-        <Gallery />
         <Process />
         <Doctor />
         <Testimonials />
