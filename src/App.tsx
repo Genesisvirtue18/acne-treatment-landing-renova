@@ -84,6 +84,37 @@ function Section({
   );
 }
 
+const emailjsConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined,
+  clinicTemplateId: import.meta.env.VITE_EMAILJS_CLINIC_TEMPLATE_ID as string | undefined,
+  thankYouTemplateId: import.meta.env.VITE_EMAILJS_THANKYOU_TEMPLATE_ID as string | undefined,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined,
+};
+
+async function sendEmailJs(templateId: string, templateParams: Record<string, string>) {
+  const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      service_id: emailjsConfig.serviceId,
+      template_id: templateId,
+      user_id: emailjsConfig.publicKey,
+      template_params: templateParams,
+    }),
+  });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(body || "EmailJS request failed");
+  }
+}
+
+function pause(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 /* ---------------- nav ---------------- */
 
 const links = [
@@ -186,7 +217,7 @@ function Hero() {
             Acne is treated in stages, because active breakouts, pigment and
             scarring do not respond to the same approach. We map every scar on
             your face, control inflammation first, then combine subcision,
-            the <strong className="font-semibold text-forest-900">VirtuEx Erbium+ co2</strong> and{" "}
+            the <strong className="font-semibold text-forest-900">VirtuEx (Erbium+ co2)</strong> and{" "}
             <strong className="font-semibold text-forest-900">QLARA Q-switched toning</strong> into one written protocol.
           </p>
 
@@ -214,7 +245,7 @@ function Hero() {
         <div className="relative animate-fade-up [animation-delay:150ms]">
           <div className="absolute -inset-4 rounded-[2.5rem] bg-mint-200/60 blur-xl" />
           <img
-            src="/images/hero.jpg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSODiyRbQG4StlYQPuTiSSEBvA8dvpoaEW8-JDKo7YFdSDoP1qBgbuS-7I&s=10"
             alt="Clear, smooth skin after acne scar treatment"
             className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl shadow-forest-900/15"
           />
@@ -238,7 +269,7 @@ function Hero() {
 function Strip() {
   const items = [
     "Subcision",
-    "VirtuEx Erbium+ co2",
+    "VirtuEx (Erbium+ co2)",
     "QLARA Q-Switched",
     "Microneedling RF",
     "Chemical Peels",
@@ -356,7 +387,7 @@ function Technology() {
           The technology
         </span>
         <h2 className="mt-4 font-display text-3xl leading-tight text-mint-50 md:text-5xl">
-          Two platforms, used together.
+          Platforms used together.
         </h2>
         <p className="mt-4 text-mint-200/70">
           Acne scarring is a texture problem <em>and</em> a pigment problem. We
@@ -455,21 +486,7 @@ function Results() {
               after={c.after}
               className="aspect-square w-full cursor-ew-resize"
             />
-            <figcaption className="px-2 pt-5 pb-2">
-              <h3 className="font-display text-lg text-forest-900">{c.title}</h3>
-              <dl className="mt-3 space-y-1.5 text-sm">
-                {[
-                  ["Patient", c.patient],
-                  ["Protocol", c.plan],
-                  ["Timeline", c.duration],
-                ].map(([k, v]) => (
-                  <div key={k} className="flex gap-2">
-                    <dt className="w-20 shrink-0 text-forest-800/50">{k}</dt>
-                    <dd className="text-forest-800">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </figcaption>
+            
           </figure>
         ))}
       </div>
@@ -698,12 +715,8 @@ function Faq() {
 
 function Booking() {
   const [sending, setSending] = useState(false);
-
-  const openWhatsApp = (message: string) => {
-    const phone = clinic.phone.replace(/\D/g, "");
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
+  const [status, setStatus] = useState<"idle" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
   return (
     <Section id="book" className="bg-forest-900 text-mint-100">
       <div className="grid gap-12 lg:grid-cols-2">
@@ -737,6 +750,10 @@ function Booking() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            setSending(true);
+            setStatus("idle");
+            setError(null);
+
             const form = e.currentTarget;
             const data = new FormData(form);
 
@@ -746,23 +763,49 @@ function Booking() {
             const concern = String(data.get("concern") || "").trim();
             const message = String(data.get("message") || "").trim();
 
-            const whatsappMessage = [
-              `Hi ${clinic.name}, I'd like to book a consultation.`,
-              "",
-              `Name: ${fullName}`,
-              `Phone: ${phone}`,
-              `Email: ${email}`,
-              `Primary concern: ${concern}`,
-              message ? `Message: ${message}` : null,
-            ]
-              .filter(Boolean)
-              .join("\n");
+            const templateParams = {
+              name: fullName,
+              phone,
+              email,
+              to_email: clinic.email,
+              concern,
+              message,
+              clinic_name: clinic.name,
+              reply_to: email,
+            };
 
-            const phoneNumber = clinic.phone.replace(/\D/g, "");
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-            setSending(true);
-            window.open(url, "_blank", "noopener,noreferrer");
-            setSending(false);
+            (async () => {
+              try {
+                if (
+                  !emailjsConfig.serviceId ||
+                  !emailjsConfig.clinicTemplateId ||
+                  !emailjsConfig.thankYouTemplateId ||
+                  !emailjsConfig.publicKey
+                ) {
+                  throw new Error(
+                    "Missing EmailJS config. Set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_CLINIC_TEMPLATE_ID, VITE_EMAILJS_THANKYOU_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY.",
+                  );
+                }
+
+                await sendEmailJs(emailjsConfig.clinicTemplateId, {
+                  ...templateParams,
+                  to_email: clinic.email,
+                });
+                await pause(1000);
+                await sendEmailJs(emailjsConfig.thankYouTemplateId, {
+                  ...templateParams,
+                  to_email: email,
+                });
+
+                form.reset();
+                setStatus("sent");
+              } catch (err) {
+                setStatus("error");
+                setError(err instanceof Error ? err.message : "Unable to send email.");
+              } finally {
+                setSending(false);
+              }
+            })();
           }}
           className="rounded-3xl border border-mint-100/12 bg-mint-100/[0.06] p-7 md:p-9"
         >
@@ -820,13 +863,22 @@ function Booking() {
               </label>
               <button
                 type="submit"
-                className="mt-2 rounded-full bg-mint-100 px-6 py-3.5 text-sm font-bold text-forest-900 transition hover:bg-white"
+                disabled={sending}
+                className="mt-2 rounded-full bg-mint-100 px-6 py-3.5 text-sm font-bold text-forest-900 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Send on WhatsApp
+                {sending ? "Sending..." : "Send enquiry"}
               </button>
               <p className="text-center text-[11px] text-mint-200/45">
-                Your details will open in WhatsApp as a prefilled message.
+                We’ll send your enquiry to {clinic.email} and a thank-you email to you.
               </p>
+              {status === "sent" && (
+                <p className="text-center text-[11px] text-mint-300">
+                  Thanks. Your message has been sent.
+                </p>
+              )}
+              {status === "error" && error && (
+                <p className="text-center text-[11px] text-rose-300">{error}</p>
+              )}
           </div>
         </form>
       </div>
@@ -851,7 +903,7 @@ function Footer() {
              
             </div>
             <p className="mt-4 text-sm leading-relaxed text-forest-800/65">
-              Dermatologist-led acne scar revision using the VirtuEx Erbium+ co2
+              Dermatologist-led acne scar revision using the VirtuEx (Erbium+ co2)
               laser and the QLARA Q-switched pigmentation platform.
             </p>
             <div className="mt-5 space-y-2 text-sm text-forest-800/70">

@@ -50,7 +50,7 @@ export const scarTypes = [
     key: "Icepick",
     title: "Icepick Scars",
     desc: "Narrow, deep punctures that look like the skin was pierced with a fine tool. Common on cheeks and temples.",
-    protocol: "VirtuEx Erbium+ co2 fractional laser",
+    protocol: "VirtuEx (Erbium+ co2 )fractional laser",
   },
   {
     key: "Boxcar",
@@ -90,7 +90,7 @@ export const technologies = [
     name: "VirtuEx Laser",
     category: "Laser",
     partner: "Derma Lasertech Pvt. Ltd. technology partner",
-    headline: "VirtuEx Erbium+ co2 fractional laser",
+    headline: "VirtuEx (Erbium+ co2 )fractional laser",
     summary:
       "VirtuEx is an advanced Erbium+ co2 fractional laser that stimulates collagen production, resurfaces damaged skin, improves scars and pigmentation, and supports healthier, smoother, younger-looking skin with minimal downtime.",
     detail:
@@ -182,7 +182,7 @@ export const cases = [
     after: "/images/after2.jpg",
     title: "Deep icepick scarring, both cheeks",
     patient: "Male, 31",
-    plan: "5 × VirtuEx Erbium+ co2 + QLARA toning",
+    plan: "5 × VirtuEx (Erbium+ co2 )+ QLARA toning",
     duration: "9 months",
   },
   {
