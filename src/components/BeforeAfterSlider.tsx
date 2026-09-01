@@ -15,7 +15,7 @@ export default function BeforeAfterSlider({
   className = "",
   beforeObjectPosition = "center center",
   afterObjectPosition = "center center",
-  hideEyes = true,
+  hideEyes = false,
 }: Props) {
   const [mobileFlipped, setMobileFlipped] = useState(false);
 

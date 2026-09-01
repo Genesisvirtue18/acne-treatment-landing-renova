@@ -11,27 +11,27 @@
 
 export const acneOverview = {
   intro:
-    "Acne is rarely just a teen thing. Adult hormonal acne, jawline cysts, dark marks and post-acne scars often need a staged plan, not a single facial. We combine medical acne treatment, dermatology-grade topicals, in-clinic peels and scar revision when the skin is ready. When acne overlaps with other concerns, we also review related options such as dark circles & under-eye hollows, dull skin & uneven tone, and pigmentation & melasma.",
+    "Acne scars are not all the same. Depressed scars, uneven texture, dark marks and redness each need a different level of treatment. We assess what is left behind, then combine dermatologist-led procedures and prescribed home care into a staged scar revision plan.",
   symptoms: [
-    "Painful cystic acne along the jawline and chin",
-    "Whiteheads, blackheads, or pustules",
-    "Dark marks that linger after acne heal",
-    "Rolling, ice-pick or boxcar scars from past acne",
-    "Acne that flares with periods, stress, or specific foods",
+    "Rolling scars that create soft shadows on the cheeks",
+    "Boxcar scars with defined, uneven edges",
+    "Deep ice-pick scars on the cheeks or temples",
+    "Dark post-acne marks or lingering redness",
+    "Uneven texture that remains after breakouts have healed",
   ],
   causes: [
-    "Hormonal imbalance, especially androgens in women",
-    "Excess sebum production",
-    "P. acnes bacteria colonising blocked follicles",
-    "High glycemic foods and dairy in some patients",
-    "Over-cleansing or the wrong skincare products disrupting the barrier",
+    "Loss of collagen after deep or prolonged inflammation",
+    "Fibrous bands tethering the skin beneath rolling scars",
+    "Picking or squeezing inflamed breakouts",
+    "Pigment changes after a spot has healed",
+    "Active acne that continues to create new scar tissue",
   ],
   approach: [
-    "Identify your acne type and any trigger before treatment starts",
-    "Treat active acne first with medical management, topicals and in-clinic peels",
-    "Build a maintenance plan to prevent rebound when active treatment ends",
-    "Address scarring only once active acne is controlled",
-    "Set an honest timeline: meaningful results take months, not weeks",
+    "Map each scar type, its depth and any associated pigmentation",
+    "Control active acne first if new inflammation is still present",
+    "Release tethered scars with subcision where clinically appropriate",
+    "Resurface texture and stimulate collagen with the right procedure",
+    "Review progress, prescribe aftercare and plan the next stage",
   ],
   tools: [
     {
@@ -225,7 +225,7 @@ export const cases = [
   {
     id: 6,
     before: "/images/b6.jpeg",
-    after: "/images/a7.jpeg",
+    after: "/images/a6.jpeg",
     title: "Post-inflammatory pigment and shallow atrophy",
     patient: "Female, 34",
     plan: "QLARA toning + fractional resurfacing",
@@ -321,21 +321,21 @@ export const doctor = {
 export const testimonials = [
   {
     quote:
-      "Honest consult, no rush, no upsell. That's why I drive across the city for my monthly visit.",
+      "I had rolling scars that looked much deeper in harsh light. The plan was explained clearly, and after subcision and resurfacing my cheek texture is noticeably softer.",
     name: "Aarti J.",
-    treatment: "Acne Management",
+    treatment: "Rolling Scar Subcision + Resurfacing",
   },
   {
     quote:
-      "She didn't sell me a treatment, she diagnosed my melasma properly and built a plan I could actually follow. Three months in, the difference is real.",
+      "My cheeks had old boxcar scars and dark marks. The sessions were spaced around healing, and the combination plan made my skin look more even without promising perfection.",
     name: "Meera S.",
-    treatment: "Cosmelan Protocol",
+    treatment: "Boxcar Scar Resurfacing + QLARA Toning",
   },
   {
     quote:
-      "Dr. Bhardwaj walked me through the entire plan before I committed to anything. A year on, my cheeks look completely different.",
+      "I finally understood why one treatment had not helped my ice-pick scars. Dr. Bhardwaj mapped the scars first and built a gradual plan that gave me measurable improvement.",
     name: "Rohit K.",
-    treatment: "Acne Scar Resurfacing",
+    treatment: "Ice-pick Scar Revision",
   },
 ];
 
@@ -358,7 +358,7 @@ export const steps = [
   {
     n: "04",
     title: "Review & maintenance",
-    desc: "Standardised photos at every visit, plus a barrier-repair and sun-protection routine so results hold and the plan can be adjusted if needed.",
+    desc: "Standardised photos at every visit, plus a barrier-repair plan with prescribed medication and sun protection so results hold and the plan can be adjusted if needed.",
   },
 ];
 
@@ -401,7 +401,7 @@ export const faqs = [
   },
   {
     q: "Who can undergo these treatments?",
-    a: "Most adults with stable health can be assessed for treatment, but timing matters. We usually stabilise active acne first, then choose scar procedures once inflammation is under control.",
+    a: "Anyone with acne scars can be assessed for treatment. We first consider the scar type, skin sensitivity, previous procedures and whether new breakouts are still active. If inflammation is present, we treat that first before starting scar revision.",
   },
   {
     q: "How do I choose the right procedure for maximum benefit?",
@@ -409,7 +409,7 @@ export const faqs = [
   },
   {
     q: "What are the post-procedure instructions?",
-    a: "You will usually be asked to keep the skin clean, avoid picking, use sunscreen strictly, and pause irritating products for a short period. Your doctor will give instructions based on the exact treatment performed.",
+    a: "You will usually be asked to keep the skin clean, avoid picking, use prescribed medication as directed, use sunscreen strictly, and pause irritating products for a short period. We will give instructions based on the exact treatment performed.",
   },
   {
     q: "How frequently can I take my sessions?",
@@ -429,7 +429,7 @@ export const faqs = [
   },
   {
     q: "How long will the effects last after the last session?",
-    a: "Results can last well, especially when active acne is controlled and maintenance skincare is followed. Acne itself can recur, so long-term control is as important as scar revision.",
+    a: "Acne scar treatment results are generally long-lasting, provided new acne is controlled. If you develop more acne after treatment, it can lead to new scarring. Following your prescribed medication, skincare and maintenance plan helps protect your results.",
   },
   {
     q: "Will I be given any medicine after the procedure?",
@@ -438,10 +438,6 @@ export const faqs = [
   {
     q: "Can acne scars be removed completely?",
     a: "Honest answer: no protocol erases scars 100%. With a correctly combined plan most patients see 60–85% improvement in scar depth, texture and shadowing. We show you standardised photographs at every review so progress is measurable, not marketing.",
-  },
-  {
-    q: "How many sessions will I need?",
-    a: "Depending on the condition being treated, most patients benefit from 3–6 VirtuEx sessions spaced several weeks apart. Pigmentation on the QLARA may need a few sessions for superficial marks, and a longer gradual course for deeper pigment.",
   },
   {
     q: "Is laser treatment painful?",

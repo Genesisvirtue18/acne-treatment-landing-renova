@@ -117,11 +117,11 @@ function pause(ms: number) {
 /* ---------------- nav ---------------- */
 
 const links = [
-  ["Acne & Scars", "#acne"],
+  ["Scar Treatments", "#acne"],
   ["Approach", "#types"],
   ["Technology", "#technology"],
   ["Results", "#results"],
-  ["Your Doctor", "#doctor"],
+  ["Doctor", "#doctor"],
   ["FAQ", "#faq"],
 ];
 
@@ -208,20 +208,20 @@ function Hero() {
         <div className="animate-fade-up">
           <Eyebrow>Acne Scar Revision · Delhi NCR</Eyebrow>
           <h1 className="mt-5 font-display text-4xl leading-[1.05] tracking-tight text-forest-900 sm:text-5xl md:text-6xl">
-            Stop new breakouts.
+            Treat the scars acne left behind.
             <br />
-            <span className="italic text-forest-600">Repair the scars left behind.</span>
+            <span className="italic text-forest-600">Restore smoother-looking texture.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-forest-800/75 md:text-lg">
-            Acne is treated in stages, because active breakouts, pigment and
-            scarring do not respond to the same approach. We map every scar on
-            your face, control inflammation first, then combine subcision,
+            Acne scars require a personalised treatment plan. We map every scar
+            on your face, identify what is causing the uneven texture,
+            then combine procedures such as subcision,
             the <strong className="font-semibold text-forest-900">VirtuEx (Erbium+ co2)</strong> and{" "}
             <strong className="font-semibold text-forest-900">QLARA Q-switched toning</strong> into one written protocol.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Btn>Book an acne + scar consult →</Btn>
+            <Btn>Book a scar assessment →</Btn>
             <Btn href="#results" variant="ghost">
               See real results
             </Btn>
@@ -270,7 +270,7 @@ function Strip() {
     "Subcision",
     "VirtuEx (Erbium+ co2)",
     "QLARA Q-Switched",
-    "Microneedling RF",
+    "Microneedling",
     "Chemical Peels",
     "Dermatologist-led",
   ];
@@ -293,17 +293,17 @@ function AcneOverview() {
   return (
     <Section id="acne" className="bg-mint-100">
       <div className="max-w-3xl">
-        <Eyebrow>Acne and acne scars</Eyebrow>
+        <Eyebrow>Acne scar concerns</Eyebrow>
         <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
-          Stop new breakouts. Repair the scars left behind.
+          Every scar type needs a different treatment plan.
         </h2>
         <p className="mt-4 text-forest-800/75">{acneOverview.intro}</p>
         <div className="mt-6 flex flex-wrap gap-2">
           {[
-            "Medical acne management",
-            "Dermatology-grade topicals",
-            "In-clinic peels",
-            "Scar revision & pigmentation care",
+            "Scar mapping",
+            "Subcision",
+            "Fractional resurfacing",
+            "Pigmentation correction",
           ].map((item) => (
             <span
               key={item}
@@ -318,9 +318,9 @@ function AcneOverview() {
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
         <div className="rounded-3xl border border-mint-200 bg-white p-7 shadow-sm">
           <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest-600">
-            What you might notice
+            What we assess
           </div>
-          <h3 className="mt-3 font-display text-2xl text-forest-900">Symptoms</h3>
+          <h3 className="mt-3 font-display text-2xl text-forest-900">Scar patterns</h3>
           <ul className="mt-5 space-y-3 text-sm leading-relaxed text-forest-800/75">
             {acneOverview.symptoms.map((item) => (
               <li key={item} className="flex gap-3">
@@ -333,9 +333,9 @@ function AcneOverview() {
 
         <div className="rounded-3xl border border-mint-200 bg-white p-7 shadow-sm">
           <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest-600">
-            What's actually happening
+            Why scars remain
           </div>
-          <h3 className="mt-3 font-display text-2xl text-forest-900">Common causes</h3>
+          <h3 className="mt-3 font-display text-2xl text-forest-900">What affects texture</h3>
           <ul className="mt-5 space-y-3 text-sm leading-relaxed text-forest-800/75">
             {acneOverview.causes.map((item) => (
               <li key={item} className="flex gap-3">
@@ -357,13 +357,13 @@ function ScarTypes() {
   return (
     <Section id="types">
       <div className="max-w-2xl">
-        <Eyebrow>Our approach</Eyebrow>
+        <Eyebrow>Scar treatment approach</Eyebrow>
         <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
-          A staged plan, not a single facial.
+          A precise plan for your scar pattern.
         </h2>
         <p className="mt-4 text-forest-800/70">
-          We treat active acne first, stabilise the barrier, and only then move
-          to scar revision and pigmentation support.
+          Your scar type, skin tone, healing response and previous treatments all
+          influence the right combination of procedures.
         </p>
       </div>
 
@@ -478,12 +478,17 @@ function Results() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="max-w-2xl">
           <Eyebrow>Before &amp; after</Eyebrow>
-          <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
-            Hover on desktop, slide on phone.
-          </h2>
-          <p className="mt-4 text-forest-800/70">
-            Standardised lighting, same angle, same distance - no filters, no flattering angles. Hover on desktop or use the slider on phone to compare the change. Individual results vary with scar depth, skin type and adherence to aftercare.
-          </p>
+         <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-5xl">
+  Acne Scar Before-and-After Results
+</h2>
+
+<p className="mt-4 text-forest-800/70">
+  See how scar depth, texture and post-acne marks can improve throughout the
+  treatment journey. Photographs are captured using consistent
+  lighting, angles and distance, without filters or enhancements. Individual
+  results may vary depending on skin type, scar severity, treatment plan and
+  adherence to aftercare.
+</p>
         </div>
         <Btn href="#book" variant="ghost">
           Ask about your case
@@ -530,7 +535,7 @@ function Process() {
     {
       n: "04",
       title: "Progress Review & Maintenance",
-      desc: "Standardised photographs are taken at every visit to monitor your progress. We also recommend a personalised skin-barrier repair and sun-protection routine to maintain results and adjust the treatment plan when necessary.",
+      desc: "Standardised photographs are taken at every visit to monitor your progress. We also recommend a personalised skin-barrier repair plan with prescribed medication and sun protection to maintain results and adjust the treatment plan when necessary.",
     },
   ];
 
@@ -687,7 +692,7 @@ function Testimonials() {
             </div>
             <figcaption className="mt-6 border-t border-mint-200 pt-4">
               <div className="text-sm font-semibold text-forest-900">{t.name}</div>
-              
+              <div className="mt-1 text-xs text-forest-800/60">{t.treatment}</div>
             </figcaption>
           </figure>
         ))}
@@ -706,7 +711,7 @@ function Faq() {
         <div>
           <Eyebrow>Patient questions</Eyebrow>
           <h2 className="mt-4 font-display text-3xl leading-tight text-forest-900 md:text-4xl">
-            Straight answers for acne and scars.
+            Straight answers about acne scar treatment.
           </h2>
           <p className="mt-4 text-sm text-forest-800/70">
             Still unsure? Bring the question to your consult — nothing is rushed.
@@ -872,7 +877,7 @@ function Booking() {
                 <select
                   name="concern"
                   className="mt-2 w-full rounded-xl border border-mint-100/15 bg-forest-900/40 px-4 py-3 text-sm text-mint-50 outline-none transition focus:border-mint-400"
-                  defaultValue="Active acne + scarring"
+                  defaultValue="Atrophic acne scars"
                 >
                   {[
                     "Atrophic acne scars",
@@ -991,5 +996,3 @@ export default function App() {
     </div>
   );
 }
-
-
